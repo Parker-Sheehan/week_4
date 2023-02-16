@@ -13,6 +13,7 @@ const {
 
 app.get('/api/names', getNames)
 app.post('/api/names/:name', addName)
+app.delete('/api/names/:name' deleteName)
 
 
 
