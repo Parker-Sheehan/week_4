@@ -11,6 +11,7 @@ const {
     createMessage
 } = require('./controllers/messageController')
 
+app.get(`/api/messages/:pin`, getMessages)
 app.post(`/api/messages`, createMessage)
 
 app.listen(4004, () => console.log(`running on 4004`))

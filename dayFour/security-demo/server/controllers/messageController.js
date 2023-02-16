@@ -27,5 +27,18 @@ module.exports = {
         let messagesToReturn = {...msgObj}
         delete messagesToReturn.pinHash
         res.status(200).send(messagesToReturn)
+    },
+    getMessages: (req, res) => {
+      let {pin} = req.params
+      for(let i = 0; i < chats.length; i++){
+        const existing = bcrypt.compareSync(pin, chats[i].pinHash)
+        if(existing){
+          let messagesToReturn = (chats[i])
+          delete messagesToReturn.pinHash
+          res.status(200).send(messagesToReturn)
+          return
+        }
+      }
+      res.status(404).send('Message not found')
     }
 }

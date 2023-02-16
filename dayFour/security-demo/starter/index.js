@@ -17,6 +17,23 @@ function submitHandler(e) {
     let pin = document.querySelector('#secret-message-pin-input')
     let message = document.querySelector('#secret-message-input')
 
+    if(message.value === ""){
+      axios.get(baseURL + `/${pin.value}`)
+        .then(response => {
+          let {data} = response
+          if(typeof data === "string"){
+            alert(data)
+            return
+          }
+
+          displayMessages(data)
+        })
+        .catch(err => console.log(err))
+
+      pin.value = ""
+      return
+    }
+
     let bodyObj = {
         pin: pin.value,
         message: message.value
