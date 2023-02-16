@@ -5,7 +5,7 @@ module.exports = {
         res.status(200).send(arr)
     },
     addName: (req,res) => {
-        arr.push(req.params.name)
-        res.status(200).send(arr)
+        console.log(req.params.name)
+        res.status(200).send(req.params.name)
     }
 }
